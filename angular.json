@@ -75,6 +75,10 @@
               "browserTarget": "myFlix-Angular-client:build:development"
             }
           },
+          "options": {
+            "browserTarget": "myFlix-Angular-client:build",
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
