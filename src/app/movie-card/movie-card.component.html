@@ -11,12 +11,17 @@
       </button>
       <button mat-button color="primary"
         (click)="openDirector(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)">
-        Director
+        {{movie.Director.Name}}
       </button>
       <button mat-button color="primary" (click)="openSynopsis(movie.Title, movie.Description)">
         Synopsis
       </button>
-      <mat-icon>favorite_border</mat-icon>
+      <button mat-button *ngIf="!isFav(movie._id)" (click)="addToFavorites(movie._id)" color="primary">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
+      <button mat-button *ngIf="isFav(movie._id)" (click)="removeFromFavorites(movie._id)" color="primary">
+        <mat-icon>favorite</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

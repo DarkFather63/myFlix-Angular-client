@@ -1,1 +1,23 @@
-<p>user-profile works!</p>
+<app-navbar></app-navbar>
+<div class="user-profile-main">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{user.Username}}'s Profile</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p><b>Username:</b> {{user.Username}}</p>
+      <p><b>Email:</b> {{user.Email}}</p>
+      <p><b>Birthday:</b> {{user.Birthday | date }}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="openEditProfileDialog()" color="primary">
+        <mat-icon>edit</mat-icon> Edit Profile
+      </button>
+      <button mat-raised-button (click)="deleteUserProfile()" color="primary">
+        <mat-icon>delete</mat-icon> Delete Account
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

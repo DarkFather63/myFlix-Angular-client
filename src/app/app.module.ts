@@ -25,6 +25,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
 import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 const appRoutes: Routes = [
@@ -44,7 +46,9 @@ const appRoutes: Routes = [
     UserProfileComponent,
     GenreDialogComponent,
     DirectorDialogComponent,
-    SynopsisDialogComponent
+    SynopsisDialogComponent,
+    EditProfileComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

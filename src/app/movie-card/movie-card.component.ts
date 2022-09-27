@@ -20,6 +20,7 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavoriteMovies();
   }
 
   getMovies(): void {
@@ -30,9 +31,36 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //added these to open dialogs for genre, director, and synopsis. Update those components so these work!
-  //these are empty dialogs for now, but the buttons are connected to the functions. The components still need 
-  //content.
+  getFavoriteMovies(): void {
+    this.fetchApiData.getUserFavorites().subscribe((resp: any) => {
+      this.favoriteMovies = resp;
+      console.log(this.favoriteMovies);
+      return this.favoriteMovies;
+    });
+  }
+
+  //Following three calls allow status display on movies (if they've been favorited or not)
+  isFav(id: string): boolean {
+    return this.favoriteMovies.includes(id);
+  }
+
+  addToFavorites(id: string): void {
+    console.log(id);
+    this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+  }
+
+  removeFromFavorites(id: string): void {
+    console.log(id);
+    this.fetchApiData.deleteFavorite(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+  }
+
+  //Following open dialogs for genre, director and synopsis
   openGenre(name: string, description: string): void {
     this.dialog.open(GenreDialogComponent, {
       data: {
