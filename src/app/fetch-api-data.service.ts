@@ -53,6 +53,7 @@ export class UserRegistrationService {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
+
         }
       )
     }).pipe(
@@ -69,7 +70,7 @@ export class UserRegistrationService {
 
 
   //function to get a particular movie
-  public getMovies(Title: any): Observable<any> {
+  public getMovie(Title: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `movies/${Title}`, {
       headers: new HttpHeaders(
