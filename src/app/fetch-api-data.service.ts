@@ -70,9 +70,9 @@ export class UserRegistrationService {
 
 
   //function to get a particular movie
-  public getMovie(Title: any): Observable<any> {
+  public getMovie(title: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + `movies/${Title}`, {
+    return this.http.get(apiUrl + `movies/${title}`, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
