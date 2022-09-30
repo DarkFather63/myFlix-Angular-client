@@ -53,7 +53,6 @@ export class UserRegistrationService {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
-
         }
       )
     }).pipe(
@@ -65,7 +64,7 @@ export class UserRegistrationService {
   //function to get response body to later be mapped to http functions
   private extractResponseData(res: any): any {
     const body = res;
-    return body || {};
+    return body;
   }
 
 
