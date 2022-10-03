@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   }
 
   goToProfile(): void {
-    this.router.navigate(['profile'])
+    this.router.navigate(['user'])
   }
 
   logOut(): void {

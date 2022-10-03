@@ -1,4 +1,5 @@
-<div style="display: flex;">
+<app-navbar></app-navbar>
+<div class="movie-card" style="display: flex;">
   <mat-card *ngFor="let movie of movies; let i = index" style="flex: 1 1 auto;">
     <mat-card-header>
       <mat-card-title>{{movie.Title}}</mat-card-title>
