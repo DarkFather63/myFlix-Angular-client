@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
+import { DirectorDialogComponent } from '../director-dialog/director-dialog.component';
+import { SynopsisDialogComponent } from '../synopsis-dialog/synopsis-dialog.component';
 import { UserRegistrationService } from '../fetch-api-data.service';
 
 @Component({
@@ -12,11 +15,14 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 })
 export class UserProfileComponent implements OnInit {
   user: any = {};
+  favoriteMovies: any[] = [];
+  movies: any[] = [];
 
   constructor(public fetchApiData: UserRegistrationService, public dialog: MatDialog, public router: Router, public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getUser()
+    this.getFavoriteMovies();
   }
 
 
@@ -50,6 +56,47 @@ export class UserProfileComponent implements OnInit {
         localStorage.clear();
       });
     }
+  }
+
+  getFavoriteMovies(): void {
+    this.fetchApiData.getUserFavorites().subscribe((resp: any) => {
+      this.favoriteMovies = resp;
+      console.log(this.favoriteMovies);
+      return this.favoriteMovies;
+    });
+  }
+
+
+  //Following open dialogs for genre, director and synopsis
+  openGenre(name: string, description: string): void {
+    this.dialog.open(GenreDialogComponent, {
+      data: {
+        Name: name,
+        Description: description
+      },
+      width: '500px'
+    });
+  }
+
+  openDirector(name: string, bio: string, birth: Date): void {
+    this.dialog.open(DirectorDialogComponent, {
+      data: {
+        Name: name,
+        Bio: bio,
+        Birth: birth
+      },
+      width: '500px'
+    });
+  }
+
+  openSynopsis(title: string, description: string): void {
+    this.dialog.open(SynopsisDialogComponent, {
+      data: {
+        Title: title,
+        Description: description
+      },
+      width: '500px'
+    });
   }
 
 }

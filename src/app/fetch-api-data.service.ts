@@ -133,8 +133,8 @@ export class UserRegistrationService {
   //get favorites
   public getUserFavorites(): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user')
-    return this.http.get(apiUrl + `users/${username}/movies`, {
+    const user = localStorage.getItem('user')
+    return this.http.get(apiUrl + `users/${user}/movies`, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -148,10 +148,10 @@ export class UserRegistrationService {
 
 
   //add to favorites
-  public addFavoriteMovie(movieId: any): Observable<any> {
+  public addFavoriteMovie(movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
-    return this.http.post(apiUrl + `users/${username}/movies/${movieId}`, {
+    return this.http.put(apiUrl + `users/${username}/movies/${movieId}`, { favoriteMovie: movieId }, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

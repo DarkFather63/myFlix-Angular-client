@@ -1,1 +1,12 @@
-<p>synopsis-dialog works!</p>
+<mat-card class="synopsis-dialog">
+  <mat-card-title>{{ data.Title }}</mat-card-title>
+  <br />
+  <mat-dialog-content>
+    <b>Synopsis: </b>{{ data.Description }}
+  </mat-dialog-content>
+  <mat-card-actions>
+    <button mat-stroked-button aria-label="Close the synopsis details button" mat-dialog-close color="primary">
+      Close
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,19 +1,33 @@
 .movie-card {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  padding: 20px;
+  margin: auto;
   justify-content: center;
+}
 
+.movie-view {
+  background-color: #ff9641;
+}
 
-  mat-card-title {
-    text-overflow: hidden;
+mat-card {
+  position: relative;
+  justify-content: center;
+  max-width: 400px;
+  margin: 15px;
+  padding: 20px 0;
+  width: 280px;
+}
 
-  }
+mat-card-header {
+  padding: 2px;
+  margin: 2px;
+}
 
-  img {
-    height: 400px;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
+img {
+  height: 400px;
+  width: auto;
+  margin: auto;
+  padding-left: 20px;
+  object-fit: contain;
 }
