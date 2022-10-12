@@ -31,6 +31,12 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Function to register user using data service
+   * Will alert user to success or failure
+   *
+   * @memberof UserRegistrationFormComponent
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
       //logic (to be implemented) for successful user reg goes here

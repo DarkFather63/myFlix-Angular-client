@@ -26,7 +26,12 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  /**
+   * Function using data service to log in a user
+   * If unsuccessful, an alert will appear (see data service)
+   * 
+   * @memberof UserLoginFormComponent
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
 

@@ -25,7 +25,12 @@ export class UserProfileComponent implements OnInit {
     this.getFavoriteMovies();
   }
 
-
+  /**
+   * Function using data service to retrieve user info
+   * and populate profile page
+   *
+   * @memberof UserProfileComponent
+   */
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -34,12 +39,21 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * Function to open a dialog to edit user info
+   *
+   * @memberof UserProfileComponent
+   */
   openEditProfileDialog(): void {
     this.dialog.open(EditProfileComponent, {
       width: '400px'
     });
   }
-
+  /**
+   * Function using data service to delete a user completely
+   *
+   * @memberof UserProfileComponent
+   */
   deleteUserProfile(): void {
     if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
       this.router.navigate(['welcome']).then(() => {
@@ -58,6 +72,11 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * Function to retrieve user favorite movies
+   *
+   * @memberof UserProfileComponent
+   */
   getFavoriteMovies(): void {
     this.fetchApiData.getUserFavorites().subscribe((resp: any) => {
       this.favoriteMovies = resp;
@@ -67,7 +86,13 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  //Following open dialogs for genre, director and synopsis
+  /**
+   * Function to open genre dialog from user profile
+   *
+   * @param {string} name
+   * @param {string} description
+   * @memberof UserProfileComponent
+   */
   openGenre(name: string, description: string): void {
     this.dialog.open(GenreDialogComponent, {
       data: {
@@ -77,7 +102,14 @@ export class UserProfileComponent implements OnInit {
       width: '500px'
     });
   }
-
+  /**
+   * Function to open director dialog from user profile
+   *
+   * @param {string} name
+   * @param {string} bio
+   * @param {Date} birth
+   * @memberof UserProfileComponent
+   */
   openDirector(name: string, bio: string, birth: Date): void {
     this.dialog.open(DirectorDialogComponent, {
       data: {
@@ -89,6 +121,13 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Function to open synopsis dialog from user profile
+   *
+   * @param {string} title
+   * @param {string} description
+   * @memberof UserProfileComponent
+   */
   openSynopsis(title: string, description: string): void {
     this.dialog.open(SynopsisDialogComponent, {
       data: {

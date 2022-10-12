@@ -22,7 +22,11 @@ export class MovieCardComponent implements OnInit {
     this.getMovies();
     this.getFavoriteMovies();
   }
-
+  /**
+   * Uses data service to get all movies for this component
+   *
+   * @memberof MovieCardComponent
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -30,7 +34,12 @@ export class MovieCardComponent implements OnInit {
       return this.movies;
     });
   }
-
+  /**
+   * Uses data service to get user favorites
+   * this allows visualization of favorited movies
+   *
+   * @memberof MovieCardComponent
+   */
   getFavoriteMovies(): void {
     this.fetchApiData.getUserFavorites().subscribe((resp: any) => {
       this.favoriteMovies = resp;
@@ -39,11 +48,23 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //Following three calls allow status display on movies (if they've been favorited or not)
+  /**
+   * Function to check if a movie is favorited
+   * by a user - later used to render UI details
+   *
+   * @param {string} id
+   * @return {*}  {boolean}
+   * @memberof MovieCardComponent
+   */
   isFav(id: string): boolean {
     return this.favoriteMovies.includes(id);
   }
-
+  /**
+   * Uses data service to add movie to user favorites array
+   *
+   * @param {string} id
+   * @memberof MovieCardComponent
+   */
   addToFavorites(id: string): void {
     console.log(id);
     this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
@@ -51,7 +72,12 @@ export class MovieCardComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
+  /**
+   * Uses data service to remove movie from user favorites array
+   *
+   * @param {string} id
+   * @memberof MovieCardComponent
+   */
   removeFromFavorites(id: string): void {
     console.log(id);
     this.fetchApiData.deleteFavorite(id).subscribe((result) => {
@@ -60,7 +86,13 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //Following open dialogs for genre, director and synopsis
+  /**
+   * Uses data service to open genre dialog description
+   *
+   * @param {string} name
+   * @param {string} description
+   * @memberof MovieCardComponent
+   */
   openGenre(name: string, description: string): void {
     this.dialog.open(GenreDialogComponent, {
       data: {
@@ -70,7 +102,14 @@ export class MovieCardComponent implements OnInit {
       width: '500px'
     });
   }
-
+  /**
+   * Uses data service to open director details dialog
+   *
+   * @param {string} name
+   * @param {string} bio
+   * @param {Date} birth
+   * @memberof MovieCardComponent
+   */
   openDirector(name: string, bio: string, birth: Date): void {
     this.dialog.open(DirectorDialogComponent, {
       data: {
@@ -81,7 +120,13 @@ export class MovieCardComponent implements OnInit {
       width: '500px'
     });
   }
-
+  /**
+   * Uses data service to opent genre details dialog
+   *
+   * @param {string} title
+   * @param {string} description
+   * @memberof MovieCardComponent
+   */
   openSynopsis(title: string, description: string): void {
     this.dialog.open(SynopsisDialogComponent, {
       data: {

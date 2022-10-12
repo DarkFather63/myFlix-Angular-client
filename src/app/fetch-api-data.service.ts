@@ -14,7 +14,13 @@ export class UserRegistrationService {
   constructor(private http: HttpClient) {
   }
 
-  //function for user to register
+  /**
+   *
+   * Calls API enpoint to add new user
+   * @param {*} userDetails
+   * @return {*}  {Observable<any>} as user object in JSON format
+   * @memberof UserRegistrationService
+   */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
@@ -22,7 +28,13 @@ export class UserRegistrationService {
     );
   }
 
-  //function to log user into app
+  /**
+   *
+   * Calls API endpoint to login user
+   * @param {*} userDetails
+   * @return {*}  {Observable<any>} as user data in JSON format
+   * @memberof UserRegistrationService
+   */
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'login', userDetails).pipe(
@@ -30,7 +42,14 @@ export class UserRegistrationService {
     );
   }
 
-  //handleError function for catching errors in communication 
+  /**
+   *
+   * Function to handle any errors when calling endpoints
+   * @private
+   * @param {HttpErrorResponse} error
+   * @return {*}  {*} error response in console + alert to error occurrence
+   * @memberof UserRegistrationService
+   */
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred: ', error.error.message);
@@ -46,7 +65,12 @@ export class UserRegistrationService {
     );
   }
 
-  //logic for retrieving all movies
+  /**
+   * Retrieves all movies from the API by calling movies endpoint
+   *
+   * @return {*}  {Observable<any>} Returns movie array
+   * @memberof UserRegistrationService
+   */
   public getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {
@@ -61,14 +85,27 @@ export class UserRegistrationService {
     );
   }
 
-  //function to get response body to later be mapped to http functions
+  /**
+   *
+   * Function to make sure body is mapped to request
+   * @private
+   * @param {*} res
+   * @return {*}  {*}
+   * @memberof UserRegistrationService
+   */
   private extractResponseData(res: any): any {
     const body = res;
     return body;
   }
 
 
-  //function to get a particular movie
+  /**
+   * GETs one movie from movies array by calling API endpoint
+   *
+   * @param {*} title
+   * @return {*}  {Observable<any>} movie by title
+   * @memberof UserRegistrationService
+   */
   public getMovie(title: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `movies/${title}`, {
@@ -83,7 +120,13 @@ export class UserRegistrationService {
     );
   }
 
-  //function for retrieving director view and info
+  /**
+   * GETs director through API enpoint
+   *
+   * @param {*} directorName
+   * @return {*}  {Observable<any>} as director object
+   * @memberof UserRegistrationService
+   */
   public getDirector(directorName: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `movies/director/${directorName}`, {
@@ -98,7 +141,13 @@ export class UserRegistrationService {
     );
   }
 
-  //get genre
+  /**
+   * GETs genre 
+   *
+   * @param {*} genreName
+   * @return {*}  {Observable<any>} as genre object
+   * @memberof UserRegistrationService
+   */
   public getGenre(genreName: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `movies/genre/${genreName}`, {
@@ -114,7 +163,13 @@ export class UserRegistrationService {
   }
 
 
-  //get user
+  /**
+   * GETs user
+   *
+   * @return {*}  {Observable<any>} as user object for use in viewing user details,
+   * as in a profile page
+   * @memberof UserRegistrationService
+   */
   public getUser(): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -130,7 +185,12 @@ export class UserRegistrationService {
     );
   }
 
-  //get favorites
+  /**
+   * GETs user favorite movies array
+   *
+   * @return {*}  {Observable<any>} as movies array in user object
+   * @memberof UserRegistrationService
+   */
   public getUserFavorites(): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user')
@@ -147,7 +207,13 @@ export class UserRegistrationService {
   }
 
 
-  //add to favorites
+  /**
+   * PUTs movie to user favorites array
+   *
+   * @param {string} movieId
+   * @return {*}  {Observable<any>} as movie added to array
+   * @memberof UserRegistrationService
+   */
   public addFavoriteMovie(movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -163,7 +229,13 @@ export class UserRegistrationService {
     );
   }
 
-  //edit user
+  /**
+   * PUTs user info updates to user object
+   *
+   * @param {*} newDetails
+   * @return {*}  {Observable<any>} as user details object
+   * @memberof UserRegistrationService
+   */
   public editUser(newDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -179,7 +251,13 @@ export class UserRegistrationService {
     );
   }
 
-  //delete user
+  /**
+   * DELETEs user object - caution - removes user completely
+   *
+   * @return {*}  {Observable<any>} - returns affirmative or negative response depending on delete
+   * success
+   * @memberof UserRegistrationService
+   */
   public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -195,7 +273,14 @@ export class UserRegistrationService {
     );
   }
 
-  //delete movie from favorites
+  /**
+   * DELETEs user favorite movie from favorites array
+   *
+   * @param {*} movieId
+   * @return {*}  {Observable<any>} updated array without specified movie if successful
+   * as well as success or failure message
+   * @memberof UserRegistrationService
+   */
   public deleteFavorite(movieId: any): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
