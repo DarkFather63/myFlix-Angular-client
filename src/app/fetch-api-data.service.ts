@@ -18,7 +18,7 @@ export class UserRegistrationService {
    *
    * Calls API enpoint to add new user
    * @param {*} userDetails
-   * @return {*}  {Observable<any>} as user object in JSON format
+   * @return {*}  \{Observable<any>\} as user object in JSON format
    * @memberof UserRegistrationService
    */
   public userRegistration(userDetails: any): Observable<any> {
@@ -32,7 +32,7 @@ export class UserRegistrationService {
    *
    * Calls API endpoint to login user
    * @param {*} userDetails
-   * @return {*}  {Observable<any>} as user data in JSON format
+   * @return {*}  \{Observable<any>\} as user data in JSON format
    * @memberof UserRegistrationService
    */
   public userLogin(userDetails: any): Observable<any> {
@@ -47,7 +47,7 @@ export class UserRegistrationService {
    * Function to handle any errors when calling endpoints
    * @private
    * @param {HttpErrorResponse} error
-   * @return {*}  {*} error response in console + alert to error occurrence
+   * @return {*}  \{*\} error response in console + alert to error occurrence
    * @memberof UserRegistrationService
    */
   private handleError(error: HttpErrorResponse): any {
@@ -68,7 +68,7 @@ export class UserRegistrationService {
   /**
    * Retrieves all movies from the API by calling movies endpoint
    *
-   * @return {*}  {Observable<any>} Returns movie array
+   * @return {*}  \{Observable<any>\} Returns movie array
    * @memberof UserRegistrationService
    */
   public getAllMovies(): Observable<any> {
@@ -90,7 +90,7 @@ export class UserRegistrationService {
    * Function to make sure body is mapped to request
    * @private
    * @param {*} res
-   * @return {*}  {*}
+   * @return {*}  \{*\}
    * @memberof UserRegistrationService
    */
   private extractResponseData(res: any): any {
@@ -103,7 +103,7 @@ export class UserRegistrationService {
    * GETs one movie from movies array by calling API endpoint
    *
    * @param {*} title
-   * @return {*}  {Observable<any>} movie by title
+   * @return {*}  \{Observable<any>\} movie by title
    * @memberof UserRegistrationService
    */
   public getMovie(title: any): Observable<any> {
@@ -124,7 +124,7 @@ export class UserRegistrationService {
    * GETs director through API enpoint
    *
    * @param {*} directorName
-   * @return {*}  {Observable<any>} as director object
+   * @return {*}  \{Observable<any>\} as director object
    * @memberof UserRegistrationService
    */
   public getDirector(directorName: any): Observable<any> {
@@ -145,7 +145,7 @@ export class UserRegistrationService {
    * GETs genre 
    *
    * @param {*} genreName
-   * @return {*}  {Observable<any>} as genre object
+   * @return {*}  \{Observable<any>\} as genre object
    * @memberof UserRegistrationService
    */
   public getGenre(genreName: any): Observable<any> {
@@ -166,7 +166,7 @@ export class UserRegistrationService {
   /**
    * GETs user
    *
-   * @return {*}  {Observable<any>} as user object for use in viewing user details,
+   * @return {*}  \{Observable<any>\} as user object for use in viewing user details,
    * as in a profile page
    * @memberof UserRegistrationService
    */
@@ -188,7 +188,7 @@ export class UserRegistrationService {
   /**
    * GETs user favorite movies array
    *
-   * @return {*}  {Observable<any>} as movies array in user object
+   * @return {*}  \{Observable<any>\} as movies array in user object
    * @memberof UserRegistrationService
    */
   public getUserFavorites(): Observable<any> {
@@ -211,7 +211,7 @@ export class UserRegistrationService {
    * PUTs movie to user favorites array
    *
    * @param {string} movieId
-   * @return {*}  {Observable<any>} as movie added to array
+   * @return {*}  \{Observable<any>\} as movie added to array
    * @memberof UserRegistrationService
    */
   public addFavoriteMovie(movieId: string): Observable<any> {
@@ -233,7 +233,7 @@ export class UserRegistrationService {
    * PUTs user info updates to user object
    *
    * @param {*} newDetails
-   * @return {*}  {Observable<any>} as user details object
+   * @return {*}  \{Observable<any>\} as user details object
    * @memberof UserRegistrationService
    */
   public editUser(newDetails: any): Observable<any> {
@@ -254,7 +254,7 @@ export class UserRegistrationService {
   /**
    * DELETEs user object - caution - removes user completely
    *
-   * @return {*}  {Observable<any>} - returns affirmative or negative response depending on delete
+   * @return {*}  \{Observable<any>\} - returns affirmative or negative response depending on delete
    * success
    * @memberof UserRegistrationService
    */
@@ -277,7 +277,7 @@ export class UserRegistrationService {
    * DELETEs user favorite movie from favorites array
    *
    * @param {*} movieId
-   * @return {*}  {Observable<any>} updated array without specified movie if successful
+   * @return {*}  \{Observable<any>\} updated array without specified movie if successful
    * as well as success or failure message
    * @memberof UserRegistrationService
    */
